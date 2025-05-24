@@ -17,15 +17,12 @@ pipeline {
 
         stage('Validation') {
             steps {
-                script {
-                    def requiredDirs = ['demo/src/main/java', 'demo/src/test/java', 'demo/lib']
-                    for (dir in requiredDirs) {
-                        if (!fileExists(dir)) {
-                            error "Wymagany katalog '${dir}' nie istnieje. Przerywam pipeline."
-                        }
-                    }
-                }
-            }
+                           sh '''
+                               [ -d demo/src/main/java ] || { echo "Brakuje katalogu demo/src/main/java"; exit 1; }
+                               [ -d demo/src/test/java ] || { echo "Brakuje katalogu demo/src/test/java"; exit 1; }
+                               [ -d demo/lib ] || { echo "Brakuje katalogu demo/lib/"; exit 1; }
+                           '''
+                       }
         }
 
         stage('Build') {
