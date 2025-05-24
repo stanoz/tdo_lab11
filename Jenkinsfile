@@ -47,10 +47,10 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            java -jar lib/junit-platform-console-standalone-*.jar \
-                              --class-path ${CLASS_DIR}:${TEST_DIR}:lib/* \
+                            java -jar demo/lib/junit-platform-console-standalone.jar \
+                              --class-path target/classes:target/test-classes:demo/lib/* \
                               --scan-class-path \
-                              --reports-dir=${REPORT_DIR}
+                              --reports-dir=target/reports
                         '''
                     } finally {
                         junit "${REPORT_DIR}/*.xml"
