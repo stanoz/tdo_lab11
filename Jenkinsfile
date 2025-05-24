@@ -9,11 +9,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git credentialsId: "${GIT_CREDENTIALS_ID}", url: 'git@your-private-repo-url.git'
-            }
-        }
+         stage('Checkout') {
+                    steps {
+                        git url: 'https://github.com/Mredosz/Lab11TDO.git', branch: 'main'
+                    }
+         }
 
         stage('Validation') {
             steps {
