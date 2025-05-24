@@ -18,9 +18,9 @@ pipeline {
         stage('Validation') {
             steps {
                            sh '''
-                               [ -d demo/src/main/java ] || { echo "Brakuje katalogu demo/src/main/java"; exit 1; }
-                               [ -d demo/src/test/java ] || { echo "Brakuje katalogu demo/src/test/java"; exit 1; }
-                               [ -d demo/lib ] || { echo "Brakuje katalogu demo/lib/"; exit 1; }
+                               [ -d demo_tdo_lab11/src/main/java ] || { echo "Brakuje katalogu demo_tdo_lab11/src/main/java"; exit 1; }
+                               [ -d demo_tdo_lab11/src/test/java ] || { echo "Brakuje katalogu demo_tdo_lab11/src/test/java"; exit 1; }
+                               [ -d demo_tdo_lab11/lib ] || { echo "Brakuje katalogu demo_tdo_lab11/lib/"; exit 1; }
                            '''
                        }
         }
@@ -30,8 +30,8 @@ pipeline {
                 sh '''
                     mkdir -p ${CLASS_DIR} ${TEST_DIR} ${REPORT_DIR}
 
-                    javac -cp "demo/lib/*" -d ${CLASS_DIR} $(find demo/src/main/java -name "*.java")
-                    javac -cp "${CLASS_DIR}:demo/lib/*" -d ${TEST_DIR} $(find demo/src/test/java -name "*.java")
+                    javac -cp "demo_tdo_lab11/lib/*" -d ${CLASS_DIR} $(find demo_tdo_lab11/src/main/java -name "*.java")
+                    javac -cp "${CLASS_DIR}:demo_tdo_lab11/lib/*" -d ${TEST_DIR} $(find demo_tdo_lab11/src/test/java -name "*.java")
                 '''
             }
             post {
@@ -47,7 +47,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            java -jar demo/lib/junit-platform-console-standalone.jar \
+                            java -jar demo_tdo_lab11/lib/junit-platform-console-standalone.jar \
                               --class-path target/classes:target/test-classes:demo/lib/* \
                               --scan-class-path \
                               --reports-dir=target/reports
