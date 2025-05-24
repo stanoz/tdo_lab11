@@ -47,8 +47,8 @@ pipeline {
                 script {
                     try {
                         sh '''
-                            java -jar demo/lib/junit-platform-console-standalone.jar \
-                              --class-path target/classes:target/test-classes:demo/lib/* \
+                            java -jar demo_tdo_lab11/lib/junit-platform-console-standalone.jar \
+                              --class-path target/classes:target/test-classes:demo_tdo_lab11/lib/* \
                               --scan-class-path \
                               --reports-dir=target/reports
                         '''
