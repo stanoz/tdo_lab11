@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                     mkdir -p ${CLASS_DIR} ${TEST_DIR} ${REPORT_DIR}
 
-                    javac -cp "demo_tdo_lab11/lib/*" -d target/classes demo_tdo_lab11/src/main/java/org.demo_tdo_lab11/DemoTdoLab11Application.java
+                    javac -cp "demo_tdo_lab11/lib/*" -d target/classes demo_tdo_lab11/src/main/java/org/demo/demo_tdo_lab11/DemoTdoLab11Application.java
                     javac -cp "${CLASS_DIR}:demo_tdo_lab11/lib/*" -d ${TEST_DIR} $(find demo_tdo_lab11/src/test/java -name "*.java")
                 '''
             }
