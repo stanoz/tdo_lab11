@@ -18,7 +18,7 @@ pipeline {
         stage('Validation') {
             steps {
                 script {
-                    def requiredDirs = ['src/main/java', 'src/test/java', 'lib']
+                    def requiredDirs = ['demo/src/main/java', 'demo/src/test/java', 'demo/lib']
                     for (dir in requiredDirs) {
                         if (!fileExists(dir)) {
                             error "Wymagany katalog '${dir}' nie istnieje. Przerywam pipeline."
